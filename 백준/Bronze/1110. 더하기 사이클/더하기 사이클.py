@@ -1,18 +1,17 @@
 N = int(input())
 
-default = N
-new_N = -1
+initial_num = N
+new_num  = -1
 cnt = 0
 
-while N != new_N:
-    if default < 10:
-        sum_N = 0 + (default % 10)
-        new_N = (default % 10) * 10 + (sum_N % 10)
-        default = new_N
+while initial_num != new_num:
+    if N < 10:
+        new_num = (N * 10) + (0 + N)
+        N = new_num
         cnt += 1
     else:
-        sum_N = (default // 10) + (default % 10)
-        new_N = (default % 10) * 10 + (sum_N % 10)
-        default = new_N
+        new_num = (N % 10) * 10 + (((N // 10) + (N % 10)) % 10)
+        N = new_num
         cnt += 1
+
 print(cnt)
