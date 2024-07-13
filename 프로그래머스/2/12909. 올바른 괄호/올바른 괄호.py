@@ -4,9 +4,9 @@ def solution(s):
         if bracket == "(":
             stack.append("(")
         elif bracket == ")":
-            if stack:
+            try:
                 stack.pop()
-            else:
+            except IndexError:
                 return False
     if stack:
         return False
