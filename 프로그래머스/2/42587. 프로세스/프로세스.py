@@ -1,16 +1,13 @@
+from collections import deque
+
 def solution(priorities, location):
-    processes = []
-    proceed = []
-    for i in range(len(priorities)):
-        processes.append(chr(ord('A') + i))
-    target = processes[location]
-    queue = [info for info in zip(processes, priorities)]
+    queue = deque([(idx, priority) for idx, priority in enumerate(priorities)])
+    cnt = 0
     while queue:
-        process = queue.pop(0)
-        if any(q[1] > process[1] for q in queue):
+        process = queue.popleft()
+        if any(process[1] < q[1] for q in queue):
             queue.append(process)
         else:
-            proceed.append(process)
-    for idx, order in enumerate(proceed):
-        if order[0] == target:
-            return idx + 1
+            cnt += 1
+            if process[0] == location:
+                return cnt
