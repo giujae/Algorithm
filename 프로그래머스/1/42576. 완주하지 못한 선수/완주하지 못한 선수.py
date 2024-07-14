@@ -1,9 +1,9 @@
 def solution(participant, completion):
     dict = {}
+    sum_hash = 0
     for part in participant:
-        dict[part] = dict.get(part, 0) + 1
+        dict[hash(part)] = part
+        sum_hash += hash(part)
     for comp in completion:
-        dict[comp] -= 1
-        if dict[comp] == 0:
-            del dict[comp]
-    return list(dict.keys())[0]
+        sum_hash -= hash(comp)
+    return dict[sum_hash]
