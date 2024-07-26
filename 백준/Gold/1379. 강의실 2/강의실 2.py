@@ -1,24 +1,30 @@
 import sys, heapq
 
-input = sys.stdin.readline
-n = int(input())
-arr = [list(map(int, input().split())) for _ in range(n)]
-lecture = [0 for _ in range(n + 1)]
-arr.sort(key=lambda x: (x[1], x[2]))
+N = int(input())
+
+lec_info = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
+
+room_use = [0 for _ in range(N + 1)]
+
 room = []
-for i in range(1, n + 1):
+
+for i in range(1, N + 1):
     heapq.heappush(room, i)
 
-minHeap = []
-for x in arr:
-    while minHeap and minHeap[0][0] <= x[1]:
-        end, r = heapq.heappop(minHeap)
-        heapq.heappush(room, r)
+lec_info.sort(key=lambda x: (x[1], x[2]))
 
-    r = heapq.heappop(room)
-    heapq.heappush(minHeap, [x[2], r])
-    lecture[x[0]] = r
+room_inuse = []
 
-print(max(lecture))
-for x in lecture[1:]:
-    print(x)
+for idx, st, en in lec_info:
+    while room_inuse and room_inuse[0][0] <= st:
+        end, room_num = heapq.heappop(room_inuse)
+        heapq.heappush(room, room_num)
+    new_room = heapq.heappop(room)
+    heapq.heappush(room_inuse, (en, new_room))
+    room_use[idx] = new_room
+
+
+print(max(room_use))
+
+for i in room_use[1:]:
+    print(i)
