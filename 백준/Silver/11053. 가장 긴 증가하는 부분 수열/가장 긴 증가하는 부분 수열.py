@@ -1,5 +1,7 @@
+import sys
+
 N = int(input())
-A = list(map(int, input().split()))
+A = list(map(int, sys.stdin.readline().split()))
 
 dp = [1] * N
 
