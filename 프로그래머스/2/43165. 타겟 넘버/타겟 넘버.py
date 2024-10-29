@@ -1,13 +1,17 @@
-def solution(numbers, target):
+def dfs(numbers, target, idx, value):
     answer = 0
-    possible = [0]
-    for num in numbers:
-        tmp = []
-        for poss in possible:
-            tmp.append(poss + num)
-            tmp.append(poss - num)
-        possible = tmp
-    for pos in possible:
-        if pos == target:
-            answer += 1
+    
+    if(idx == len(numbers)):
+        if(value == target):
+            return 1
+        else:
+            return 0
+    
+    answer += dfs(numbers, target, idx+1, value+numbers[idx])
+    answer += dfs(numbers, target, idx+1, value-numbers[idx])
+    return answer
+
+def solution(numbers, target):
+    answer = dfs(numbers, target, 0, 0)
+    
     return answer
