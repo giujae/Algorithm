@@ -1,8 +1,13 @@
-from itertools import product
-
-
 def solution(numbers, target):
-    l = [(x, -x) for x in numbers]
-    s = list(map(sum, product(*l)))
-
-    return s.count(target)
+    answer = 0
+    possible = [0]
+    for num in numbers:
+        tmp = []
+        for poss in possible:
+            tmp.append(poss + num)
+            tmp.append(poss - num)
+        possible = tmp
+    for pos in possible:
+        if pos == target:
+            answer += 1
+    return answer
