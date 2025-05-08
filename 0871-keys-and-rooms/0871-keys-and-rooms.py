@@ -6,15 +6,15 @@ class Solution(object):
         """
         n = len(rooms)
 
-        visited = [False] * n # 방문처리 배열
+        visited = set() # 방문처리 하되, 중복은 제거
 
         def dfs(room):
-            visited[room] = True
+            visited.add(room)
             for key in rooms[room]: # 해당 방을 방문했을 때 얻은 열쇠들에 대해
-                if not visited[key]:
+                if key not in visited:
                     dfs(key)
         dfs(0)
 
-        return all(visited) # iterable 객체 내부에 모든 값이 True 인지
+        return len(rooms) == len(visited)
 
 
