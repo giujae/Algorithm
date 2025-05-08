@@ -20,4 +20,16 @@
 |  |
 | ------- |
 | [0739-daily-temperatures](https://github.com/giujae/Algorithm/tree/master/0739-daily-temperatures) |
+## Depth-First Search
+|  |
+| ------- |
+| [0871-keys-and-rooms](https://github.com/giujae/Algorithm/tree/master/0871-keys-and-rooms) |
+## Breadth-First Search
+|  |
+| ------- |
+| [0871-keys-and-rooms](https://github.com/giujae/Algorithm/tree/master/0871-keys-and-rooms) |
+## Graph
+|  |
+| ------- |
+| [0871-keys-and-rooms](https://github.com/giujae/Algorithm/tree/master/0871-keys-and-rooms) |
 <!---LeetCode Topics End-->
