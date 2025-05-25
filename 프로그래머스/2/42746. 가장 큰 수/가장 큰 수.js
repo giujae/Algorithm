@@ -1,11 +1,8 @@
 function solution(numbers) {
-    let answer = '';
     const compareFn = (a, b) => {
-        return Number(String(b)+String(a)) - Number(String(a)+String(b));
+        return +(b +''+ a) - (a+''+b)
     }
-    if(numbers.reduce((acc, curr) => (acc + curr), 0) === 0){
-        return '0'
-    }
-    answer = numbers.sort(compareFn).join('');
+    let answer = '';
+    answer = numbers.reduce((a, b) => (a + b)) === 0 ? '0' : numbers.sort(compareFn).join('')
     return answer;
 }
